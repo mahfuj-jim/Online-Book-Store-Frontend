@@ -5,13 +5,20 @@
   text-align: center;
   display: grid;
   place-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.book-card h2{
+.book-card:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.book-card h2 {
   font-size: 20px;
 }
 
-.book-card p{
+.book-card p {
   margin: 0;
 }
 
