@@ -13,7 +13,6 @@ const Cart = ({ books, removeBook }) => {
       0
     );
 
-    // Update the total price state
     setTotalPrice(calculatedTotalPrice);
   }, [books]);
 
