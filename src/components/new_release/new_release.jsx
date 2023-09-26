@@ -32,7 +32,7 @@ const NewRelease = ({ addBook }) => {
             imageSrc={`/src/assets/book${(index % 3) + 1}.png`}
             title={book.title}
             authorName={book.author.name}
-            addBook={addBook}
+            getBook={addBook}
             price={book.discountPrice ? book.discountPrice : book.price}
             buttonTitle={"Add to Cart"}
           />

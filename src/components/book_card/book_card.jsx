@@ -2,8 +2,8 @@
 import Button from "../elements/button/button";
 import "./book_card.style.css";
 
-const BookCard = ({ bookId, imageSrc, title, authorName, price, addBook, removeBook, buttonTitle }) => {
-  const handleAddToCart = () => {
+const BookCard = ({ bookId, imageSrc, title, authorName, price, getBook, buttonTitle }) => {
+  const handleEvent = () => {
     const book = {
       bookId,
       imageSrc,
@@ -12,20 +12,7 @@ const BookCard = ({ bookId, imageSrc, title, authorName, price, addBook, removeB
       price,
     };
 
-    addBook(book);
-  };
-
-  const handleRemoveFromCart = () => {
-    console.log("Remove");
-    const book = {
-      bookId,
-      imageSrc,
-      title,
-      authorName,
-      price,
-    };
-
-    removeBook(book);
+    getBook(book);
   };
 
   return (
@@ -34,19 +21,11 @@ const BookCard = ({ bookId, imageSrc, title, authorName, price, addBook, removeB
       <h2>{title}</h2>
       <p>Author: {authorName}</p>
       <p>Price: {price}</p>
-      {buttonTitle === "Remove" ? (
-        <Button
+      <Button
           className={"cart-btn"}
           title={buttonTitle}
-          onClick={handleRemoveFromCart}
+          onClick={handleEvent}
         ></Button>
-      ) : (
-        <Button
-          className={"cart-btn"}
-          title={buttonTitle}
-          onClick={handleAddToCart}
-        ></Button>
-      )}
     </div>
   );
 };

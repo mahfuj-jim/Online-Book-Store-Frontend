@@ -32,7 +32,7 @@ const Cart = ({ books, removeBook }) => {
             authorName={book.authorName}
             price={book.discountPrice ? book.discountPrice : book.price}
             buttonTitle={"Remove"}
-            removeBook={removeBook}
+            getBook={removeBook}
           />
         ))}
       </div>

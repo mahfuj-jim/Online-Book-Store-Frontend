@@ -21,7 +21,7 @@ const Footer = () => {
           <li>Investors</li>
         </FooterItem>
         <FooterItem title={"Our Business"}>
-          <li>Camera Group</li>
+          <li>Media Group</li>
           <li>Printing Group</li>
           <li>Imaging Group</li>
           <li>Medical Group</li>
@@ -34,7 +34,7 @@ const Footer = () => {
           <li>Governance</li>
           <li>Bird Branch Project</li>
           <li>Sustainability Report</li>
-          <li>New Cosmos of Photography</li>
+          <li>Report</li>
         </FooterItem>
       </div>
     </div>
