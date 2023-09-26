@@ -5,6 +5,7 @@ const Category = () => {
   return (
     <div className="category">
       <h1 className="h1-text">Explore Our Top Catagories</h1>
+      <p>Elevate your shopping experience to new heights with our carefully curated selection of top and featured categories. Explore today!</p>
       <br></br>
 
       <div className="row">

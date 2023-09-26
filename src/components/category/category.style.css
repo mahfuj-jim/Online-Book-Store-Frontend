@@ -5,6 +5,12 @@
     padding-top: 50px;
 }
 
+.category p{
+    margin: 20px auto;
+    text-align: center;
+    color: rgb(161, 161, 161);
+}
+
 .category-col {
     flex-basis: 32%;
     border-radius: 10px;
@@ -52,5 +58,5 @@
 
 .h1-text{
     margin-top: 20px;
-    font-size: 38px;
+    font-size: 34px;
 }

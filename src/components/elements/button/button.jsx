@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import "./button.style.css";
 
-const Button = ({title}) => {
+const Button = ({className, title}) => {
     return (
-        <button className="btn">{title}</button>
+        <button className={className}>{title}</button>
     );
 }
 

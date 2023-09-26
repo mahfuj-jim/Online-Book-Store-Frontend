@@ -1,0 +1,56 @@
+.book-card {
+  position: relative;
+  margin: 10px;
+  width: 22%;
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+
+.book-card h2{
+  font-size: 20px;
+}
+
+.book-card p{
+  margin: 0;
+}
+
+.book-card img {
+  width: 140px;
+  height: 211px;
+}
+
+.rating {
+  margin-top: 10px;
+}
+
+.star {
+  font-size: 24px;
+  color: #ffd700;
+  margin-right: 4px;
+}
+
+.star-empty::before {
+  content: "\2606";
+}
+
+.star-filled::before {
+  content: "\2605";
+}
+
+.add-to-cart {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-to-cart.visible {
+  display: block;
+}

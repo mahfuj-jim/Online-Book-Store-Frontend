@@ -2,10 +2,10 @@ import "./header.style.css";
 
 const Header = () => {
     return (
-        <div class="header">
-            <nav class="navbar">
+        <div className="header">
+            <nav className="navbar">
                 <a>Online Book Store</a>
-                <div class="nav-btn">
+                <div className="nav-btn">
                     <ul>
                         <li><a href>Home</a></li>
                         <li><a href="#services">Books</a></li>

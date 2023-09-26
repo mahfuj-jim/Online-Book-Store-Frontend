@@ -1,0 +1,19 @@
+.new-release {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.new-release p {
+  margin: 20px auto;
+  text-align: center;
+  color: rgb(161, 161, 161);
+}
+
+.book-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: -10px;
+}
