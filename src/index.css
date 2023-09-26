@@ -51,7 +51,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 } */
-button {
+/* button {
   display: inline-block;
   text-decoration: none;
   color: black;
@@ -72,7 +72,7 @@ button:hover {
   border: 1px solid black;
   background: black;
   color: white;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {
