@@ -1,0 +1,15 @@
+.cart {
+  margin-top: 80px;
+  padding-top: 30px;
+  padding-bottom: 25px;
+}
+
+.cart h1 {
+  font-size: 34px;
+}
+
+.cart p {
+  margin: 20px auto;
+  text-align: center;
+  color: rgb(161, 161, 161);
+}

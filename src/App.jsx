@@ -4,6 +4,7 @@ import Header from "./components/header/header";
 import Intro from "./components/intro/intro";
 import Category from "./components/category/category";
 import NewRelease from "./components/new_release/new_release";
+import Cart from "./components/cart/cart";
 import Footer from "./components/footer/footer";
 
 function App() {
@@ -21,12 +22,19 @@ function App() {
     }
   };
 
+  const removeBook = (index) => {
+    const updatedList = [...booksData];
+    updatedList.splice(index, 1);
+    setBooksData(updatedList);
+  };
+
   return (
     <div>
       <Header></Header>
       <Intro></Intro>
       <Category></Category>
       <NewRelease addBook={addBook}></NewRelease>
+      <Cart books={booksData} removeBook={removeBook}></Cart>
       <Footer></Footer>
     </div>
   );

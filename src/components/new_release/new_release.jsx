@@ -34,6 +34,7 @@ const NewRelease = ({ addBook }) => {
             authorName={book.author.name}
             addBook={addBook}
             price={book.discountPrice ? book.discountPrice : book.price}
+            buttonTitle={"Add to Cart"}
           />
         ))}
       </div>
