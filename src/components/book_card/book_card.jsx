@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import Button from "../elements/button/button";
+import { MyContext } from "../../App";
 import "./book_card.style.css";
 
-const BookCard = ({ bookId, imageSrc, title, authorName, price, getBook, buttonTitle }) => {
+const BookCard = ({ bookId, imageSrc, title, authorName, price, buttonTitle, isRemove }) => {
+  const { addBook, removeBook } = useContext(MyContext);
+
   const handleEvent = () => {
     const book = {
       bookId,
@@ -12,7 +16,7 @@ const BookCard = ({ bookId, imageSrc, title, authorName, price, getBook, buttonT
       price,
     };
 
-    getBook(book);
+    isRemove ? removeBook(book): addBook(book);
   };
 
   return (

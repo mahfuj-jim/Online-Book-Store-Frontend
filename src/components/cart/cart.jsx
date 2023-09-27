@@ -1,20 +1,23 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import BookCard from "../book_card/book_card";
+import { MyContext } from "../../App";
 import "./cart.style.css";
 
-const Cart = ({ books, removeBook }) => {
+const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const { cartBooksData } = useContext(MyContext);
 
   useEffect(() => {
-    const calculatedTotalPrice = books.reduce(
-      (accumulator, book) =>
-        accumulator + (book.discountPrice ? book.discountPrice : book.price),
-      0
-    );
+    let calculatedTotalPrice = 0;
+    cartBooksData.map((book) => {
+      calculatedTotalPrice += book.discountPrice
+        ? book.discountPrice
+        : book.price;
+    });
 
     setTotalPrice(calculatedTotalPrice);
-  }, [books]);
+  }, [cartBooksData]);
 
   return (
     <div className="cart">
@@ -22,16 +25,16 @@ const Cart = ({ books, removeBook }) => {
       <p>Cart Curation: Craft Your Cart with Care and Begin Checkout Bliss!</p>
       <br></br>
       <div className="book-card-container">
-        {books.map((book, index) => (
+        {cartBooksData.map((book, index) => (
           <BookCard
             key={index}
-            bookId={book._id}
-            imageSrc={`/src/assets/book${(index % 3) + 1}.png`}
+            bookId={book.bookId}
+            imageSrc={book.imageSrc}
             title={book.title}
             authorName={book.authorName}
             price={book.discountPrice ? book.discountPrice : book.price}
             buttonTitle={"Remove"}
-            getBook={removeBook}
+            isRemove={true}
           />
         ))}
       </div>

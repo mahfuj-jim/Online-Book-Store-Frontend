@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import Header from "./components/header/header";
 import Intro from "./components/intro/intro";
 import Category from "./components/category/category";
@@ -7,23 +7,24 @@ import NewRelease from "./components/new_release/new_release";
 import Cart from "./components/cart/cart";
 import Footer from "./components/footer/footer";
 
+export const MyContext = createContext();
+
 function App() {
-  const [booksData, setBooksData] = useState([]);
+  const [cartBooksData, setBooksData] = useState([]);
 
   const addBook = (book) => {
-    const bookExists = booksData.some(
-      (item) => item.bookId === book.bookId
-    );
+    const bookExists = cartBooksData.some((item) => item.bookId === book.bookId);
 
     if (!bookExists) {
-      setBooksData([...booksData, book ]);
+      setBooksData([...cartBooksData, book]);
     } else {
       alert("Book Already Exists in Cart!!!");
     }
   };
 
-  const removeBook = (index) => {
-    const updatedList = [...booksData];
+  const removeBook = (book) => {
+    const index = cartBooksData.findIndex((item) => item.bookId === book.bookId);
+    const updatedList = [...cartBooksData];
     updatedList.splice(index, 1);
     setBooksData(updatedList);
   };
@@ -33,8 +34,10 @@ function App() {
       <Header></Header>
       <Intro></Intro>
       <Category></Category>
-      <NewRelease addBook={addBook}></NewRelease>
-      <Cart books={booksData} removeBook={removeBook}></Cart>
+      <MyContext.Provider value={{ addBook, removeBook, cartBooksData }}>
+        <NewRelease></NewRelease>
+        <Cart></Cart>
+      </MyContext.Provider>
       <Footer></Footer>
     </div>
   );

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import "./new_release.style.css";
 import BookCard from "../book_card/book_card";
 
-const NewRelease = ({ addBook }) => {
+const NewRelease = () => {
   const [booksData, setBooksData] = useState(null);
 
   useEffect(() => {
@@ -32,9 +32,9 @@ const NewRelease = ({ addBook }) => {
             imageSrc={`/src/assets/book${(index % 3) + 1}.png`}
             title={book.title}
             authorName={book.author.name}
-            getBook={addBook}
             price={book.discountPrice ? book.discountPrice : book.price}
             buttonTitle={"Add to Cart"}
+            isRemove={false}
           />
         ))}
       </div>
