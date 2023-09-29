@@ -7,6 +7,7 @@ const useBookDetailsHook = (bookId) => {
 
   useEffect(() => {
     const fetchBookData = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
           `http://localhost:8000/api/book/${bookId}`
@@ -27,6 +28,7 @@ const useBookDetailsHook = (bookId) => {
     };
 
     const fetchReviews = async (bookId) => {
+      setLoading(true);
       try {
         const response = await fetch(
           `http://localhost:8000/api/review/book/${bookId}`
@@ -37,7 +39,9 @@ const useBookDetailsHook = (bookId) => {
         const res = await response.json();
         const data = res.data;
         setReviews(data);
+        setLoading(false);
       } catch (error) {
+        setLoading(false);
         console.error(error);
       }
     };
