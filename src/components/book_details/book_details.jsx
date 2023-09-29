@@ -1,54 +1,18 @@
-import { useEffect, useState } from "react";
+// BookDetailsPage.js
 import { useParams } from "react-router-dom";
 import "./book_details.style.css";
+import useBookDetailsHook from "../../hooks/useBookDetailsHook";
 
 const BookDetailsPage = () => {
   const { bookId } = useParams();
-  const [bookInfo, setBookInfo] = useState(null);
-  const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    const fetchBookData = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8000/api/book/${bookId}`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch book information");
-        }
-        const res = await response.json();
-        const data = res.data;
-
-        setBookInfo(data);
-        fetchReviews(bookId);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    const fetchReviews = async (bookId) => {
-      try {
-        const response = await fetch(
-          `http://localhost:8000/api/review/book/${bookId}`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch reviews");
-        }
-        const res = await response.json();
-        const data = res.data;
-        setReviews(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchBookData();
-  }, [bookId]);
+  const { bookInfo, reviews, loading } = useBookDetailsHook(bookId);
 
   return (
     <div className="book-details">
       <h2>Book Information:</h2>
-      {bookInfo ? (
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
         <table>
           <tbody>
             <tr>
@@ -77,8 +41,6 @@ const BookDetailsPage = () => {
             </tr>
           </tbody>
         </table>
-      ) : (
-        <p>Loading...</p>
       )}
       <h2>Reviews:</h2>
       <ul className="review-popup">
