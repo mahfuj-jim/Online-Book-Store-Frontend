@@ -11,11 +11,14 @@ table {
   margin-top: 20px;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid #ddd;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: left;
 }
@@ -31,4 +34,26 @@ ul.review-popup li {
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  height: 100px;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 20px;
 }

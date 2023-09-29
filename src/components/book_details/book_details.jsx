@@ -1,11 +1,64 @@
 // BookDetailsPage.js
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Button from "../elements/button/button";
 import "./book_details.style.css";
 import useBookDetailsHook from "../../hooks/useBookDetailsHook";
+import useReviewSubmitHook from "../../hooks/useReviewSubmitHook";
 
 const BookDetailsPage = () => {
   const { bookId } = useParams();
-  const { bookInfo, reviews, loading } = useBookDetailsHook(bookId);
+  const { bookInfo, reviews, setReviews, loading } = useBookDetailsHook(bookId);
+  const [newReview, setNewReview] = useState("");
+  const [newRating, setNewRating] = useState("");
+  const { submitReview, updateReview } = useReviewSubmitHook();
+
+  const userIdToCheck = "65051b7e844abd14dc5fed10";
+
+  const userReview = reviews.find((review) =>
+    review.user._id
+      ? review.user._id === userIdToCheck
+      : review.user === userIdToCheck
+  );
+
+  useEffect(() => {
+    if (userReview) {
+      setNewReview(userReview.review);
+      setNewRating(userReview.rating);
+    }
+  }, [userReview]);
+
+  const handleReviewSubmit = () => {
+    if (userReview) {
+      updateReview(userReview._id, newReview, newRating)
+        .then((updatedReview) => {
+          const updatedReviews = reviews.map((review) => {
+            if (review._id === updatedReview.data._id) {
+              return {
+                ...review,
+                review: updatedReview.data.review,
+                rating: updatedReview.data.rating,
+              };
+            } else {
+              return review;
+            }
+          });
+          setReviews(updatedReviews);
+        })
+        .catch((error) => {
+          console.error("Error updating review:", error);
+        });
+    } else {
+      submitReview(bookId, newReview, newRating)
+        .then((newReviewData) => {
+          console.log(newReviewData.data);
+          setReviews([...reviews, newReviewData.data]);
+        })
+        .catch((error) => {
+          console.error("Error submitting review:", error);
+        });
+    }
+  };
 
   return (
     <div className="book-details">
@@ -52,6 +105,27 @@ const BookDetailsPage = () => {
           </li>
         ))}
       </ul>
+      <div className="review-form">
+        <h2>{userReview ? "Update Review:" : "Add Review:"}</h2>
+        <textarea
+          rows="4"
+          cols="50"
+          placeholder="Write your review here..."
+          value={newReview}
+          onChange={(e) => setNewReview(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Rating (1-5)"
+          value={newRating}
+          onChange={(e) => setNewRating(e.target.value)}
+        />
+        <Button
+          className={"cart-btn"}
+          title={"Submit Review"}
+          onClick={handleReviewSubmit}
+        ></Button>
+      </div>
     </div>
   );
 };

@@ -49,7 +49,7 @@ const useBookDetailsHook = (bookId) => {
     fetchBookData();
   }, [bookId]);
 
-  return { bookInfo, reviews, loading };
+  return { bookInfo, reviews, setReviews, loading };
 };
 
 export default useBookDetailsHook;
