@@ -45,7 +45,6 @@ const useReviewSubmitHook = () => {
     })
       .then((response) => {
         if (!response.ok) {
-          console.log(response);
           throw new Error("Failed to update review");
         }
         return response.json();
@@ -55,7 +54,31 @@ const useReviewSubmitHook = () => {
       });
   };
 
-  return { submitReview, updateReview };
+  const deleteReview = (reviewId) => {
+    const requestBody = {
+      reviewId: reviewId,
+    };
+
+    return fetch(`http://localhost:8000/api/review/delete/`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "Application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(requestBody),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update review");
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.error("Error deleting review:", error);
+      });
+  };
+
+  return { submitReview, updateReview, deleteReview };
 };
 
 export default useReviewSubmitHook;

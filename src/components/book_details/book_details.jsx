@@ -11,7 +11,7 @@ const BookDetailsPage = () => {
   const { bookInfo, reviews, setReviews, loading } = useBookDetailsHook(bookId);
   const [newReview, setNewReview] = useState("");
   const [newRating, setNewRating] = useState("");
-  const { submitReview, updateReview } = useReviewSubmitHook();
+  const { submitReview, updateReview, deleteReview } = useReviewSubmitHook();
 
   const userIdToCheck = "65051b7e844abd14dc5fed10";
 
@@ -29,6 +29,16 @@ const BookDetailsPage = () => {
   }, [userReview]);
 
   const handleReviewSubmit = () => {
+    if (newReview.length < 3) {
+      alert("Please enter a review with at least 3 characters.");
+      return;
+    }
+
+    if (newRating < 1 || newRating > 5 ) {
+      alert("Please enter a valid rating between 1 and 5.");
+      return;
+    }
+
     if (userReview) {
       updateReview(userReview._id, newReview, newRating)
         .then((updatedReview) => {
@@ -58,6 +68,29 @@ const BookDetailsPage = () => {
           console.error("Error submitting review:", error);
         });
     }
+  };
+
+  const handleDeleteReview = () => {
+    const confirmation = window.confirm(
+      "Are you sure you want to delete this review?"
+    );
+    if (!confirmation) {
+      return;
+    }
+
+    deleteReview(userReview._id)
+      .then(() => {
+        const updatedReviews = reviews.filter(
+          (review) => review._id !== userReview._id
+        );
+        setReviews(updatedReviews);
+
+        setNewReview("");
+        setNewRating("");
+      })
+      .catch((error) => {
+        console.error("Error updating review:", error);
+      });
   };
 
   return (
@@ -102,6 +135,13 @@ const BookDetailsPage = () => {
             <p>{review.user.name} says:</p>
             <p>{review.review}</p>
             <p>Rating: {review.rating}</p>
+            {review.user._id === userIdToCheck && (
+              <Button
+                className={"cart-btn"}
+                title={"Delete Review"}
+                onClick={handleDeleteReview}
+              ></Button>
+            )}
           </li>
         ))}
       </ul>
