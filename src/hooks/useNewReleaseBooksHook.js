@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axiosInstance from "../utils/axios_instance";
 
 const useNewReleaseBooksHook = (searchKey) => {
   const [booksData, setBooksData] = useState(null);
@@ -10,11 +11,14 @@ const useNewReleaseBooksHook = (searchKey) => {
 
   useEffect(() => {
     const timeOutFunc = setTimeout(() => {
-      fetch(apiUrl)
-        .then((response) => response.json())
+      axiosInstance
+        .get(apiUrl)
+        .then((response) => response.data)
         .then((data) => {
           setBooksData(data);
           setLoading(false);
+
+          return data;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
