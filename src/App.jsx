@@ -8,6 +8,7 @@ import NewRelease from "./components/new_release/new_release";
 import Cart from "./components/cart/cart";
 import Footer from "./components/footer/footer";
 import BookDetailsPage from "./components/book_details/book_details";
+import SignUpPage from "./components/signup_page/signup_page";
 
 export const MyContext = createContext();
 
@@ -57,6 +58,7 @@ function App() {
           exact
         ></Route>
         <Route path="/book/:bookId" element={<BookDetailsPage />}></Route>
+        <Route path="/signup" element={<SignUpPage />}></Route>
       </Routes>
     </BrowserRouter>
   );

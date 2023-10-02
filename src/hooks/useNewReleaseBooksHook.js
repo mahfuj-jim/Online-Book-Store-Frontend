@@ -5,7 +5,7 @@ const useNewReleaseBooksHook = (searchKey) => {
   const [booksData, setBooksData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const apiUrl = `http://localhost:8000/api/book/all?page=1&limit=20${
+  const apiUrl = `/book/all?page=1&limit=20${
     searchKey ? `&searchKey=${searchKey}` : ""
   }`;
 

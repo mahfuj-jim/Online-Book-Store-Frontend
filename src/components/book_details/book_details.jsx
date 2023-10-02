@@ -61,6 +61,7 @@ const BookDetailsPage = () => {
     } else {
       submitReview(bookId, newReview, newRating)
         .then((newReviewData) => {
+          console.log(newReviewData.data);
           setReviews([...reviews, newReviewData.data]);
         })
         .catch((error) => {
