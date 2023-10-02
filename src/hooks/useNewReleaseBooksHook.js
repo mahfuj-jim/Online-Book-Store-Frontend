@@ -9,25 +9,29 @@ const useNewReleaseBooksHook = (searchKey) => {
     searchKey ? `&searchKey=${searchKey}` : ""
   }`;
 
+  const getAllBooks = () => {
+    axiosInstance
+      .get(apiUrl)
+      .then((response) => response.data)
+      .then((data) => {
+        setBooksData(data);
+        setLoading(false);
+
+        return data;
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  };
+
   useEffect(() => {
     const timeOutFunc = setTimeout(() => {
-      axiosInstance
-        .get(apiUrl)
-        .then((response) => response.data)
-        .then((data) => {
-          setBooksData(data);
-          setLoading(false);
-
-          return data;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          setLoading(false);
-        });
-    }, 500);
+      getAllBooks();
+    }, 800);
 
     return () => clearTimeout(timeOutFunc);
-  }, [apiUrl]);
+  }, [searchKey]);
 
   return { booksData, loading };
 };

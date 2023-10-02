@@ -3,12 +3,10 @@ import axiosInstance from "../utils/axios_instance";
 
 const useSignupApi = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [response, setResponse] = useState(null);
 
   const signUp = async (userData) => {
     setIsLoading(true);
-    setError(null);
     setResponse(null);
 
     userData = { ...userData, role: 2 };
@@ -17,14 +15,13 @@ const useSignupApi = () => {
     try {
       const response = await axiosInstance.post("/auth/signup", userData);
       setResponse(response.data);
-    } catch (error) {
-      setError(error);
-    } finally {
       setIsLoading(false);
+    } catch (error) {
+      console.log(error)
     }
   };
 
-  return { signUp, isLoading, error, response };
+  return { signUp, isLoading, response };
 };
 
 export default useSignupApi;
