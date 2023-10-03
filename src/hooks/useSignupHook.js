@@ -9,15 +9,14 @@ const useSignupApi = () => {
     setIsLoading(true);
     setResponse(null);
 
-    userData = { ...userData, role: 2 };
-    console.log(userData);
+    userData = { ...userData };
 
     try {
       const response = await axiosInstance.post("/auth/signup", userData);
       setResponse(response.data);
       setIsLoading(false);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 

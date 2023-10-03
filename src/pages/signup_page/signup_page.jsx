@@ -1,19 +1,31 @@
 import { useForm, Controller } from "react-hook-form";
 import "./signup_page.style.css";
 import Button from "../../components/elements/button/button";
-import useSignupApi from "../../hooks/useSignupHook"
+import useSignupApi from "../../hooks/useSignupHook";
 
 const SignUpPage = () => {
   const {
     handleSubmit,
     control,
     formState: { errors },
+    setValue,
+    getValues,
+    watch,
   } = useForm();
 
   const { signUp } = useSignupApi();
 
-  const onSubmit = (data) => {
-    signUp(data);
+  const onSubmit = () => {
+    setValue("name", `${getValues("first_name")} ${getValues("last_name")}`);
+
+    const userData = {
+      role: 2,
+      email: getValues("email"),
+      name: getValues("name"),
+      password: getValues("password"),
+    };
+
+    signUp(userData);
   };
 
   return (
@@ -21,19 +33,41 @@ const SignUpPage = () => {
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
-          <label htmlFor="name">Name</label>
-          {errors.name && <p className="error-message">Name is required.</p>}
+          <label htmlFor="first_name">First Name</label>
+          {errors.first_name && (
+            <p className="error-message">First Name is required.</p>
+          )}
           <Controller
-            name="name"
+            name="first_name"
             control={control}
             defaultValue=""
             rules={{ required: true }}
             render={({ field }) => (
               <input
                 type="text"
-                id="name"
+                id="first_name"
                 {...field}
-                className={errors.name ? "error" : ""}
+                className={errors.first_name ? "error" : ""}
+              />
+            )}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="last_name">Last Name</label>
+          {errors.last_name && (
+            <p className="error-message">Late Name is required.</p>
+          )}
+          <Controller
+            name="last_name"
+            control={control}
+            defaultValue=""
+            rules={{ required: true }}
+            render={({ field }) => (
+              <input
+                type="text"
+                id="last_name"
+                {...field}
+                className={errors.last_name ? "error" : ""}
               />
             )}
           />
@@ -96,6 +130,34 @@ const SignUpPage = () => {
                 id="password"
                 {...field}
                 className={errors.password ? "error" : ""}
+              />
+            )}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirm_password">Confirm Password</label>
+          {errors.confirm_password && (
+            <p className="error-message">
+              Password and confirm password should be same
+            </p>
+          )}
+          <Controller
+            name="confirm_password"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: true,
+              validate: (value) => {
+                if (value != watch("password"))
+                  return "Password and confirm password should be same";
+              },
+            }}
+            render={({ field }) => (
+              <input
+                type="password"
+                id="confirm_password"
+                {...field}
+                className={errors.confirm_password ? "error" : ""}
               />
             )}
           />
