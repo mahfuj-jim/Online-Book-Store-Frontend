@@ -15,6 +15,8 @@ const useSignupApi = () => {
       const response = await axiosInstance.post("/auth/signup", userData);
       setResponse(response.data);
       setIsLoading(false);
+
+      return response.data;
     } catch (error) {
       console.log(error);
     }

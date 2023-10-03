@@ -89,9 +89,6 @@ const BookDetailsPage = () => {
         );
         setReviews(updatedReviews);
 
-        // setNewReview("");
-        // setNewRating("");
-
         setValue("review", "");
         setValue("rating", "");
       })

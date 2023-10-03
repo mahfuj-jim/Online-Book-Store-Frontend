@@ -1,9 +1,11 @@
 import { useForm, Controller } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "./signup_page.style.css";
 import Button from "../../components/elements/button/button";
 import useSignupApi from "../../hooks/useSignupHook";
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
   const {
     handleSubmit,
     control,
@@ -15,7 +17,7 @@ const SignUpPage = () => {
 
   const { signUp } = useSignupApi();
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setValue("name", `${getValues("first_name")} ${getValues("last_name")}`);
 
     const userData = {
@@ -25,7 +27,12 @@ const SignUpPage = () => {
       password: getValues("password"),
     };
 
-    signUp(userData);
+    const result = await signUp(userData);
+    if (result.success) {
+      navigate("/");
+    }else{
+      console.log("Not");
+    }
   };
 
   return (
