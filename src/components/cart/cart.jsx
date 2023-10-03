@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect, useContext } from "react";
 import BookCard from "../book_card/book_card";
-import { MyContext } from "../../App";
+import { MyContext } from "../../pages/home_page/home_page";
 import "./cart.style.css";
 
 const Cart = () => {

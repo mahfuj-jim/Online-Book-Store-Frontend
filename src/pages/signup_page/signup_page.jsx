@@ -1,6 +1,6 @@
 import { useForm, Controller } from "react-hook-form";
 import "./signup_page.style.css";
-import Button from "../elements/button/button";
+import Button from "../../components/elements/button/button";
 import useSignupApi from "../../hooks/useSignupHook"
 
 const SignUpPage = () => {

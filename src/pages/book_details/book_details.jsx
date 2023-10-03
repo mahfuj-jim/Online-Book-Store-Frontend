@@ -1,7 +1,7 @@
 // BookDetailsPage.js
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Button from "../elements/button/button";
+import Button from "../../components/elements/button/button";
 import "./book_details.style.css";
 import useBookDetailsHook from "../../hooks/useBookDetailsHook";
 import useReviewSubmitHook from "../../hooks/useReviewSubmitHook";
