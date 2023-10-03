@@ -37,7 +37,6 @@ ul.review-popup li {
 }
 
 .review-form {
-  display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;

@@ -1,6 +1,6 @@
-// BookDetailsPage.js
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
 import Button from "../../components/elements/button/button";
 import "./book_details.style.css";
 import useBookDetailsHook from "../../hooks/useBookDetailsHook";
@@ -9,11 +9,22 @@ import useReviewSubmitHook from "../../hooks/useReviewSubmitHook";
 const BookDetailsPage = () => {
   const { bookId } = useParams();
   const { bookInfo, reviews, setReviews, loading } = useBookDetailsHook(bookId);
-  const [newReview, setNewReview] = useState("");
-  const [newRating, setNewRating] = useState("");
   const { submitReview, updateReview, deleteReview } = useReviewSubmitHook();
 
   const userIdToCheck = "65051b7e844abd14dc5fed10";
+
+  const {
+    handleSubmit,
+    control,
+    setValue,
+    getValues,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      review: "",
+      rating: "",
+    },
+  });
 
   const userReview = reviews.find((review) =>
     review.user._id
@@ -23,21 +34,14 @@ const BookDetailsPage = () => {
 
   useEffect(() => {
     if (userReview) {
-      setNewReview(userReview.review);
-      setNewRating(userReview.rating);
+      setValue("review", userReview.review);
+      setValue("rating", userReview.rating);
     }
-  }, [userReview]);
+  }, [setValue, userReview]);
 
   const handleReviewSubmit = () => {
-    if (newReview.length < 3) {
-      alert("Please enter a review with at least 3 characters.");
-      return;
-    }
-
-    if (newRating < 1 || newRating > 5 ) {
-      alert("Please enter a valid rating between 1 and 5.");
-      return;
-    }
+    const newReview = getValues("review");
+    const newRating = getValues("rating");
 
     if (userReview) {
       updateReview(userReview._id, newReview, newRating)
@@ -85,8 +89,11 @@ const BookDetailsPage = () => {
         );
         setReviews(updatedReviews);
 
-        setNewReview("");
-        setNewRating("");
+        // setNewReview("");
+        // setNewRating("");
+
+        setValue("review", "");
+        setValue("rating", "");
       })
       .catch((error) => {
         console.error("Error updating review:", error);
@@ -147,24 +154,58 @@ const BookDetailsPage = () => {
       </ul>
       <div className="review-form">
         <h2>{userReview ? "Update Review:" : "Add Review:"}</h2>
-        <textarea
-          rows="4"
-          cols="50"
-          placeholder="Write your review here..."
-          value={newReview}
-          onChange={(e) => setNewReview(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Rating (1-5)"
-          value={newRating}
-          onChange={(e) => setNewRating(e.target.value)}
-        />
-        <Button
-          className={"cart-btn"}
-          title={"Submit Review"}
-          onClick={handleReviewSubmit}
-        ></Button>
+        <form onSubmit={handleSubmit(handleReviewSubmit)}>
+          <div className="form-group">
+            <label htmlFor="review">Review</label>
+            {errors.review && (
+              <p className="error-message">Please enter a valid review.</p>
+            )}
+            <Controller
+              name="review"
+              control={control}
+              defaultValue={userReview ? userReview.review : ""}
+              rules={{ required: true, minLength: 3 }}
+              render={({ field }) => (
+                <textarea
+                  id="review"
+                  {...field}
+                  className={errors.review ? "error" : ""}
+                />
+              )}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="rating">Rating (1-5)</label>
+            {errors.rating && (
+              <p className="error-message">
+                Please enter a valid rating between 1 and 5.
+              </p>
+            )}
+            <Controller
+              name="rating"
+              control={control}
+              defaultValue={userReview ? userReview.rating : ""}
+              rules={{
+                required: true,
+                min: 1,
+                max: 5,
+              }}
+              render={({ field }) => (
+                <input
+                  type="number"
+                  id="rating"
+                  {...field}
+                  className={errors.rating ? "error" : ""}
+                />
+              )}
+            />
+          </div>
+          <Button
+            className={"cart-btn"}
+            title={"Submit Review"}
+            type="submit"
+          ></Button>
+        </form>
       </div>
     </div>
   );
