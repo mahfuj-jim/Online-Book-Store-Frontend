@@ -5,24 +5,6 @@
   border-radius: 5px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-table,
-th,
-td {
-  border: 1px solid #ddd;
-}
-
-th,
-td {
-  padding: 10px;
-  text-align: left;
-}
-
 ul.review-popup {
   list-style-type: none;
   padding: 0;

@@ -8,21 +8,23 @@ const Header = () => {
         <a>Online Book Store</a>
         <div className="nav-btn">
           <ul>
+          <Link to={`/`}>
+              <li>
+                <a>Home</a>
+              </li>
+            </Link>
             <li>
-              <a href>Home</a>
+              <a>Books</a>
             </li>
             <li>
-              <a href="#services">Books</a>
+              <a>New Release</a>
             </li>
             <li>
-              <a href="#office">New Release</a>
-            </li>
-            <li>
-              <a href="#academy">Blog</a>
+              <a>Blog</a>
             </li>
             <Link to={`/signup`}>
               <li>
-                <a href="#footer">Signup</a>
+                <a>Signup</a>
               </li>
             </Link>
           </ul>

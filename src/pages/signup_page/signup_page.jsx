@@ -2,6 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import "./signup_page.style.css";
 import Button from "../../components/elements/button/button";
+import Input from "../../components/elements/input/input";
 import useSignupApi from "../../hooks/useSignupHook";
 
 const SignUpPage = () => {
@@ -30,7 +31,7 @@ const SignUpPage = () => {
     const result = await signUp(userData);
     if (result.success) {
       navigate("/");
-    }else{
+    } else {
       console.log("Not");
     }
   };
@@ -50,12 +51,12 @@ const SignUpPage = () => {
             defaultValue=""
             rules={{ required: true }}
             render={({ field }) => (
-              <input
-                type="text"
-                id="first_name"
-                {...field}
-                className={errors.first_name ? "error" : ""}
-              />
+              <Input
+                type={"text"}
+                id={"first_name"}
+                field={field}
+                className={"signup-input"}
+              ></Input>
             )}
           />
         </div>
@@ -70,12 +71,12 @@ const SignUpPage = () => {
             defaultValue=""
             rules={{ required: true }}
             render={({ field }) => (
-              <input
-                type="text"
-                id="last_name"
-                {...field}
-                className={errors.last_name ? "error" : ""}
-              />
+              <Input
+                type={"text"}
+                id={"last_name"}
+                field={field}
+                className={"signup-input"}
+              ></Input>
             )}
           />
         </div>
@@ -90,12 +91,12 @@ const SignUpPage = () => {
             defaultValue=""
             rules={{ required: true, pattern: /^\S+@\S+$/i }}
             render={({ field }) => (
-              <input
-                type="email"
-                id="email"
-                {...field}
-                className={errors.email ? "error" : ""}
-              />
+              <Input
+                type={"email"}
+                id={"email"}
+                field={field}
+                className={"signup-input"}
+              ></Input>
             )}
           />
         </div>
@@ -110,12 +111,12 @@ const SignUpPage = () => {
             defaultValue=""
             rules={{ required: true, pattern: /^[0-9]{11}$/ }}
             render={({ field }) => (
-              <input
-                type="tel"
-                id="phoneNumber"
-                {...field}
-                className={errors.phoneNumber ? "error" : ""}
-              />
+              <Input
+                type={"tel"}
+                id={"phoneNumber"}
+                field={field}
+                className={"signup-input"}
+              ></Input>
             )}
           />
         </div>
@@ -132,12 +133,12 @@ const SignUpPage = () => {
             defaultValue=""
             rules={{ required: true, minLength: 8 }}
             render={({ field }) => (
-              <input
-                type="password"
-                id="password"
-                {...field}
-                className={errors.password ? "error" : ""}
-              />
+              <Input
+                type={"password"}
+                id={"password"}
+                field={field}
+                className={"signup-input"}
+              ></Input>
             )}
           />
         </div>
@@ -160,12 +161,12 @@ const SignUpPage = () => {
               },
             }}
             render={({ field }) => (
-              <input
-                type="password"
-                id="confirm_password"
-                {...field}
-                className={errors.confirm_password ? "error" : ""}
-              />
+              <Input
+                type={"password"}
+                id={"confirm_password"}
+                field={field}
+                className={"signup-input"}
+              ></Input>
             )}
           />
         </div>

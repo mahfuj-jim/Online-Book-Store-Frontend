@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import Button from "../elements/button/button";
-import { MyContext } from "../../pages/home_page/home_page";
+import Button from "../../elements/button/button";
+import { MyContext } from "../../../pages/home_page/home_page";
 import { Link } from "react-router-dom";
 import "./book_card.style.css";
 

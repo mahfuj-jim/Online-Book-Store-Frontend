@@ -1,10 +1,8 @@
 import { useState, createContext } from "react";
-import Header from "../../components/header/header";
-import Intro from "../../components/intro/intro";
-import Category from "../../components/category/category";
-import NewRelease from "../../components/new_release/new_release";
-import Cart from "../../components/cart/cart";
-import Footer from "../../components/footer/footer";
+import Intro from "./component/intro/intro.jsx";
+import Category from "./component/category/category.jsx";
+import NewRelease from "./component/new_release/new_release.jsx";
+import Cart from "./component/cart/cart.jsx";
 
 export const MyContext = createContext();
 
@@ -34,14 +32,12 @@ const HomePage = () => {
 
   return (
     <div>
-      <Header></Header>
       <Intro></Intro>
       <Category></Category>
       <MyContext.Provider value={{ addBook, removeBook, cartBooksData }}>
         <NewRelease></NewRelease>
         <Cart></Cart>
       </MyContext.Provider>
-      <Footer></Footer>
     </div>
   );
 };

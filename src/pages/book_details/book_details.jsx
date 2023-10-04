@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Button from "../../components/elements/button/button";
+import BookData from "./component/book_data/book_data";
 import "./book_details.style.css";
 import useBookDetailsHook from "../../hooks/useBookDetailsHook";
 import useReviewSubmitHook from "../../hooks/useReviewSubmitHook";
@@ -103,34 +104,7 @@ const BookDetailsPage = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <table>
-          <tbody>
-            <tr>
-              <th>Title:</th>
-              <td>{bookInfo.title}</td>
-            </tr>
-            <tr>
-              <th>Author:</th>
-              <td>{bookInfo.author.name}</td>
-            </tr>
-            <tr>
-              <th>Price:</th>
-              <td>{bookInfo.price}</td>
-            </tr>
-            <tr>
-              <th>Summary:</th>
-              <td>{bookInfo.summary}</td>
-            </tr>
-            <tr>
-              <th>Published Date:</th>
-              <td>{bookInfo.publishedDate}</td>
-            </tr>
-            <tr>
-              <th>Edition:</th>
-              <td>{bookInfo.edition}</td>
-            </tr>
-          </tbody>
-        </table>
+        <BookData bookInfo={bookInfo}></BookData>
       )}
       <h2>Reviews:</h2>
       <ul className="review-popup">

@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import BookCard from "../book_card/book_card";
-import useNewReleaseBooksHook from "../../hooks/useNewReleaseBooksHook";
+import Input from "../../../../components/elements/input/input";
+import BookCard from "../../../../components/ui/book_card/book_card";
+import useNewReleaseBooksHook from "../../../../hooks/useNewReleaseBooksHook";
 import "./new_release.style.css";
 
 const NewRelease = () => {
@@ -22,12 +23,13 @@ const NewRelease = () => {
     <div className="new-release">
       <h1 className="h1-text">New Release Books</h1>
       <p>1000+ books are published by different authors every day.</p>
-      <input
-        type="text"
-        placeholder="Search by Book or Author Name"
+      <Input
+        className={"search-input"}
+        type={"text"}
+        placeholder={"Search by Book or Author Name"}
         value={searchKey}
         onChange={handleInputChange}
-      />
+      ></Input>
       <div className="book-card-container">
         {books.map((book, index) => (
           <BookCard

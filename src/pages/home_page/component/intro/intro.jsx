@@ -1,5 +1,5 @@
 import './intro.style.css';
-import Button from '../elements/button/button.jsx';
+import Button from '../../../../components/elements/button/button';
 
 const Intro = () => {
     return (
