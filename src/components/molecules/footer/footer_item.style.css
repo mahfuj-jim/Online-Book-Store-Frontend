@@ -1,0 +1,22 @@
+.footer-col-1 {
+    margin-left: 50px;
+    flex-basis: 15%;
+}
+
+.footer-col-1 h4 {
+    margin-bottom: 10px;
+    text-align: start; 
+}
+
+.footer-col-1 ul {
+    padding: 0; 
+    list-style: none;
+}
+
+.footer-col-1 li {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #c9c9c9;
+    cursor: pointer;
+    text-align: start; 
+}

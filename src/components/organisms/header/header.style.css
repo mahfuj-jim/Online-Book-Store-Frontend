@@ -1,0 +1,48 @@
+.header {
+    min-height: 70px;
+    background-size: cover;
+    background: black;
+    justify-content: center; 
+    align-items: center;
+    padding: 0px 30px 0px 30px;
+}
+
+.navbar {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    font-size: 30px;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.navbar ul li::after {
+    width: 0%;
+    height: 2px;
+    margin: auto;
+    background: #3695e2;
+    display: block;
+    content: '';
+    border-radius: 1px;
+    transition: 0.1s;
+}
+
+.navbar ul li:hover::after,
+.navbar ul li a:hover {
+    width: 100%;
+    color: #3695e2;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}

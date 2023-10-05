@@ -1,10 +1,11 @@
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/ui/header/header";
-import Footer from "./components/ui/footer/footer"
-import BookDetailsPage from "./pages/book_details/book_details";
-import HomePage from "./pages/home_page/home_page";
-import SignUpPage from "./pages/signup_page/signup_page";
+import Header from "./components/organisms/header/header";
+import Footer from "./components/organisms/footer/footer";
+import HomePage from "./components/pages/home_page/home_page";
+import BookPage from "./components/pages/book_page/book_page";
+import SignUpPage from "./components/pages/signup_page/signup_page";
+import LoginPage from "./components/pages/login_page/login_page";
+import "./App.css";
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<HomePage></HomePage>} exact></Route>
-        <Route path="/book/:bookId" element={<BookDetailsPage />}></Route>
+        <Route path="/book/:bookId" element={<BookPage></BookPage>}></Route>
         <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
       </Routes>
       <Footer></Footer>
     </BrowserRouter>

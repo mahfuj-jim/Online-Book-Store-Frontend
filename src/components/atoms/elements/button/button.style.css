@@ -1,0 +1,45 @@
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 12px 34px;
+  margin: 50px 0;
+  font-size: 13px;
+  font-weight: 600;
+  background: transparent;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  border: 1px solid black;
+  background: black;
+  color: white;
+}
+
+.cart-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 34px;
+  margin: 12px 0;
+  font-size: 12px;
+  font-weight: 600;
+  background: transparent;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.cart-btn:hover {
+  border: 1px solid white;
+  background: white;
+  color: black;
+}

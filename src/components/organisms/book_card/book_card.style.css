@@ -1,0 +1,15 @@
+.book-card {
+  position: relative;
+  margin: 10px;
+  width: 22%;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.book-card:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}

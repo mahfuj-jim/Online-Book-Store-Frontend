@@ -1,0 +1,39 @@
+.category {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.category p{
+    margin: 20px auto;
+    text-align: center;
+    color: rgb(161, 161, 161);
+}
+
+.category-text:hover {
+    background: rgba(98, 95, 255, 0.3);
+}
+
+.category-text h3 {
+    width: 100%;
+    font-weight: 600;
+    color: #fff;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.category-text:hover h3 {
+    bottom: 38%;
+    opacity: 1;
+}
+
+.h1-text{
+    margin-top: 20px;
+    font-size: 34px;
+}

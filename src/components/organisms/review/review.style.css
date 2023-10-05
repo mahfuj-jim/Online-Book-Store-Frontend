@@ -1,0 +1,17 @@
+.review-container{
+  margin-top: 50px;
+}
+
+.review-popup {
+  width: 600px;
+  margin: 20px auto;
+  list-style-type: none;
+  padding: 0;
+}
+
+.review-popup li {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px auto;
+}

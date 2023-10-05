@@ -1,0 +1,9 @@
+.categoryImage {
+    width: 100%;
+    display: block;
+}
+
+.bookCardImage {
+    width: 140px;
+    height: 211px;
+  }
