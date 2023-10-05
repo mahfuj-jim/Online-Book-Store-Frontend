@@ -1,4 +1,4 @@
-export const SAVE_USER = (userData) => {
+export const addUser = (userData) => {
   return {
     type: "SAVE_USER",
     payload: userData,
