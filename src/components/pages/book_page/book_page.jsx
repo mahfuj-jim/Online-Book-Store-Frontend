@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
@@ -7,14 +6,14 @@ import Review from "../../organisms/review/review";
 import ReviewForm from "../../organisms/review/review_form";
 import useBookDetailsHook from "../../../hooks/useBookDetailsHook";
 import useReviewSubmitHook from "../../../hooks/useReviewSubmitHook";
+import { useSelector } from "react-redux";
 import "./book_page.style.css";
 
 const BookPage = () => {
+  const userData = useSelector((state) => state.user.userData);
   const { bookId } = useParams();
   const { bookInfo, reviews, setReviews, loading } = useBookDetailsHook(bookId);
-  const { submitReview, updateReview, deleteReview } = useReviewSubmitHook();
-
-  const userIdToCheck = "65051b7e844abd14dc5fed10";
+  const { submitReview, updateReview, deleteReview } = useReviewSubmitHook(userData.token);
 
   const {
     handleSubmit,
@@ -31,8 +30,8 @@ const BookPage = () => {
 
   const userReview = reviews.find((review) =>
     review.user._id
-      ? review.user._id === userIdToCheck
-      : review.user === userIdToCheck
+      ? review.user._id === userData.id
+      : review.user === userData.id
   );
 
   useEffect(() => {

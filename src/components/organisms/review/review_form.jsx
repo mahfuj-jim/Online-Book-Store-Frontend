@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import TextArea from "../../atoms/elements/text_area/text_area";
 import Input from "../../atoms/elements/input/input";
 import Button from "../../atoms/elements/button/button";
@@ -24,7 +24,7 @@ function ReviewForm({
           <Controller
             name="review"
             control={control}
-            defaultValue={userReview ? userReview.review : ""}
+            defaultValue={userReview ? userReview.rating : ""}
             rules={{ required: true, minLength: 3 }}
             render={({ field }) => (
               <TextArea
@@ -65,6 +65,7 @@ function ReviewForm({
           className={"cart-btn"}
           title={"Submit Review"}
           type="submit"
+          onClick={() => {}}
         ></Button>
       </form>
     </div>

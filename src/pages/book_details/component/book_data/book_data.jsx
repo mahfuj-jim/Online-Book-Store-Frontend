@@ -2,6 +2,7 @@
 import "./book_data.style.css";
 
 const BookData = ({ bookInfo }) => {
+  console.log(bookInfo);
   return (
     <table>
       <tbody>
