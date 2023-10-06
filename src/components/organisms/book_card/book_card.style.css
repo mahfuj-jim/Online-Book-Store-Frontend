@@ -13,3 +13,24 @@
   background-color: rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
+
+.quantity-counter {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.quantity-counter button {
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  border-radius: 50%;
+  width: 30px; 
+  height: 30px;
+  font-size: 20px; 
+  cursor: pointer;
+}
+
+.quantity-counter span {
+  font-size: 18px; 
+}

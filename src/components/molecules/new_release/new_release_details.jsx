@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import Input from "../../atoms/elements/input/input";
 import BookCard from "../../organisms/book_card/book_card";
 

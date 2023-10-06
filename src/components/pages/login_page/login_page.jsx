@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import Login from "../../organisms/login/login";
 import AuthTemplate from "../../templates/auth/auth_template";
 import useSignupHook from "../../../hooks/useSignupHook";
-import { addUser } from "../../../redux/actions/user_action";
+import { saveUser } from "../../../redux/slice/user_slice";
 import "./login_page.style.css";
 
 const LoginPage = () => {
@@ -32,8 +32,8 @@ const LoginPage = () => {
         id: result.data.user._id,
         email: result.data.user.email,
       };
-      
-      dispatch(addUser(userInfo));
+
+      dispatch(saveUser(userInfo));
       navigate("/");
     } else {
       console.log("Not");

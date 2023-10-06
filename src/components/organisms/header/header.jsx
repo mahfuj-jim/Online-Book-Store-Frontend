@@ -10,7 +10,7 @@ const Header = () => {
           <ul>
             <Header_tab path={"/"} title={"Home"}></Header_tab>
             <Header_tab path={"/"} title={"Books"}></Header_tab>
-            <Header_tab path={"/"} title={"New Release"}></Header_tab>
+            <Header_tab path={"/cart"} title={"Cart"}></Header_tab>
             <Header_tab path={"/login"} title={"Login"}></Header_tab>
             <Header_tab path={"/signup"} title={"Signup"}></Header_tab>
           </ul>
